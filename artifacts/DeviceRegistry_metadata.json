@@ -4,7 +4,75 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "componentExists",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decommission",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "deviceExists",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDevice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oem",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registerComponent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registerDevice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +101,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x6437928ee8490fec41fb2d24943ee8ff8c4148abd54f6185785d039e03bc3217",
+			"keccak256": "0x7130e56fb79a3bbaa7330bdd98a11340fae80f83e6d9c0e981f9701852ffc142",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6991ffa61f70f4cbd1da0d1875f14e676e35c44b5f462d57a274e9063a23b1e3",
-				"dweb:/ipfs/QmVyfMYzxrJpqbK9S4QyEC6X8YpTRCGnxZPiu1BZC3ckgB"
+				"bzz-raw://abc2212a1156d12ea106ad3ce723678fffd8b35846b910695ddb216d73c8fc89",
+				"dweb:/ipfs/QmNnCiLSzYgV3BHwJHAMQG2prTKoCRH9jj4sL9jx1Vu8rX"
 			]
 		}
 	},
