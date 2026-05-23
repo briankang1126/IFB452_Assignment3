@@ -53,8 +53,11 @@ contract DeviceRegistry{
         devices[id].currentOwner = _newOwner;
     }
 
-    function decommission() public onlyOEM {
-
+    function decommission(string memory _serialNumber) public only {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        require(devices[id].exists, "Device not found");
+        require(!devices[id].decommisioned, "Already decommissioned");
+        devices[id].decommissioned = true;
     }
 
     function deviceExists() public onlyOEM {
