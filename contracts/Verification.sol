@@ -7,3 +7,11 @@ interface IDeviceRegistry {
 
 interface IRepairEvent {
     enum RepairStatus { VERIFIED, FLAGGED }
+      struct Repair {
+        string serialNumber;
+        string removedPart;
+        string newPart;
+        address repairer;
+        uint256 timestamp;
+        RepairStatus status;
+    }
