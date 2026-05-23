@@ -142,7 +142,23 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_imei",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_model",
+						"type": "string"
+					}
+				],
 				"name": "registerDevice",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -184,11 +200,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x898757e01106fb47060df2a91c9ef2d34c22a8a12eedba471669883598d2721b",
+			"keccak256": "0x1935c67e97897af79415180ad25912b637bba96fc65bb881fa7afbb7d9abf82b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://713071c667a664df3b4d32f86aea7209ef0a8625d095f02dd8a651a6d29ccd28",
-				"dweb:/ipfs/Qme3pVXcjUAt5HwuFtXrggkVwsKwCk47ykhmph1p5jo3LF"
+				"bzz-raw://0d9740245fc72c42671f467c2dbfdbe0da302d2deb76db00e745260a3c451433",
+				"dweb:/ipfs/QmYrZ2s6Xk9oRE2ygNjwF9ZUnJbWUcudKfuNw93S4bDkN8"
 			]
 		}
 	},

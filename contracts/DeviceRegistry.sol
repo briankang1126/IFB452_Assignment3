@@ -33,8 +33,10 @@ contract DeviceRegistry{
     mapping(bytes32 => Device) public  devices;
     mapping(bytes32 => Component) public components;
 
-    function registerDevice() public onlyOEM {
-
+    function registerDevice(string memory _serialNumber, string memory _imei, string memory _model) public onlyOEM {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        require(!devices [id].exists, "Device already registered");
+        devices[id] = Device (_serialNumber, _imei, _model, block.timestamp,msg.sender, true, false);
     }
 
     function registerComponent() public onlyOEM {
