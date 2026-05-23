@@ -37,4 +37,12 @@ contract RepairEvent {
         string memory _serialNumber,
         string memory _removedPart,
         string memory _newPart
-    )
+    )public {
+        require(deviceRegistry.deviceExists(_serialNumber), "Device not registered");
+
+        RepairStatus status;
+        if (deviceRegistry.componentExists(_newPart)) {
+            status = RepairStatus.VERIFIED;
+        } else {
+            status = RepairStatus.FLAGGED;
+        }
