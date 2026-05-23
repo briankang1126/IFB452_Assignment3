@@ -39,8 +39,10 @@ contract DeviceRegistry{
         devices[id] = Device (_serialNumber, _imei, _model, block.timestamp,msg.sender, true, false);
     }
 
-    function registerComponent() public onlyOEM {
-
+    function registerComponent(string memory _partNumber, string memory _componentType) public onlyOEM {
+        bytes32 id = keccak256(abi.encodePacked(_partNumber));
+        require(!components[id]. exists, "Component Already Registered");
+        components[id] = Component(_partNumber, _componentType, block.timestamp, true);
     }
 
     function transferOwnership() public onlyOEM {
