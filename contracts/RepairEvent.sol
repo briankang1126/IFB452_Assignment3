@@ -6,3 +6,15 @@ interface IDeviceRegistry {
     function componentExists(string memory partNumber) external view returns (bool);
 }
 
+contract RepairEvent {
+
+    enum RepairStatus { VERIFIED, FLAGGED }
+
+    struct Repair {
+        string serialNumber;
+        string removedPart;
+        string newPart;
+        address repairer;
+        uint256 timestamp;
+        RepairStatus status;
+    }
