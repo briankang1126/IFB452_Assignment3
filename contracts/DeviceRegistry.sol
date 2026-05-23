@@ -60,8 +60,9 @@ contract DeviceRegistry{
         devices[id].decommissioned = true;
     }
 
-    function deviceExists() public onlyOEM {
-
+    function deviceExists(string memory _serialNumber) public view returns (bool){
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        return devices[id].exists;
     }
 
     function componentExists() public onlyOEM {
