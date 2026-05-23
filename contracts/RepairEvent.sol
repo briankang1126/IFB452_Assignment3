@@ -28,3 +28,13 @@ contract RepairEvent {
         RepairStatus status,
         uint256 timestamp
     );
+    constructor(address _deviceRegistryAddress) {
+        require(_deviceRegistryAddress != address(0), "Invalid registry address");
+        deviceRegistry = IDeviceRegistry(_deviceRegistryAddress);
+    }
+
+    function logRepair(
+        string memory _serialNumber,
+        string memory _removedPart,
+        string memory _newPart
+    )
