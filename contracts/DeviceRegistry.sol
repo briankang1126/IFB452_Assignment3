@@ -53,10 +53,10 @@ contract DeviceRegistry{
         devices[id].currentOwner = _newOwner;
     }
 
-    function decommission(string memory _serialNumber) public only {
+    function decommission(string memory _serialNumber) public {
         bytes32 id = keccak256(abi.encodePacked(_serialNumber));
         require(devices[id].exists, "Device not found");
-        require(!devices[id].decommisioned, "Already decommissioned");
+        require(!devices[id].decommissioned, "Already decommissioned");
         devices[id].decommissioned = true;
     }
 
