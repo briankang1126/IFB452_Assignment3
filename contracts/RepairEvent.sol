@@ -46,3 +46,13 @@ contract RepairEvent {
         } else {
             status = RepairStatus.FLAGGED;
         }
+          bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        repairHistory[id].push(Repair({
+            serialNumber: _serialNumber,
+            removedPart:  _removedPart,
+            newPart:      _newPart,
+            repairer:     msg.sender,
+            timestamp:    block.timestamp,
+            status:       status
+        }));
+        
