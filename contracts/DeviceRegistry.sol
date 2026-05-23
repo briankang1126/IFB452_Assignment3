@@ -8,6 +8,16 @@ contract DeviceRegistry{
         oem = msg.sender;
     }
 
+    struct Device {
+        string serialNumber;
+        string imei;
+        string model;
+        uint256 manufactureDate;
+        address currentOwner;
+        bool exists;
+        bool decommissioned;
+    }
+
     modifier onlyOEM() {
         require(msg.sender == oem, "Only OEM can call this");
         _;
