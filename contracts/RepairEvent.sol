@@ -18,3 +18,13 @@ contract RepairEvent {
         uint256 timestamp;
         RepairStatus status;
     }
+    IDeviceRegistry private deviceRegistry;
+    mapping(bytes32 => Repair[]) private repairHistory;
+
+    event RepairLogged(
+        string indexed serialNumber,
+        address indexed repairer,
+        string newPart,
+        RepairStatus status,
+        uint256 timestamp
+    );
