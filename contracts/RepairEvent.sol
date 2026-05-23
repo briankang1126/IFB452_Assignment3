@@ -55,4 +55,20 @@ contract RepairEvent {
             timestamp:    block.timestamp,
             status:       status
         }));
-        
+          emit RepairLogged(_serialNumber, msg.sender, _newPart, status, block.timestamp);
+    }
+
+    function getRepairHistory(string memory _serialNumber)
+        public view returns (Repair[] memory)
+    {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        return repairHistory[id];
+    }
+
+    function getRepairCount(string memory _serialNumber)
+        public view returns (uint256)
+    {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        return repairHistory[id].length;
+    }
+}
