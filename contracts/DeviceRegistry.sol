@@ -45,8 +45,12 @@ contract DeviceRegistry{
         components[id] = Component(_partNumber, _componentType, block.timestamp, true);
     }
 
-    function transferOwnership() public onlyOEM {
-
+    function transferOwnership(string memory _serialNumber, address _newOwner) public {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        require(devices[id].exists, "Device not found");
+        require(!devices[id].decommissioned, "Device is decommissioned");
+        require(devices[id].currentOwner == msg.sender, "Not current Owner");
+        devices[id].currentOwner = _newOwner;
     }
 
     function decommission() public onlyOEM {
