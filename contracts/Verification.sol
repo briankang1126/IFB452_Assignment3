@@ -15,3 +15,9 @@ interface IRepairEvent {
         uint256 timestamp;
         RepairStatus status;
     }
+     function getRepairHistory(string memory _serialNumber)
+        external view returns (Repair[] memory);
+
+    function getRepairCount(string memory _serialNumber)
+        external view returns (uint256);
+}
