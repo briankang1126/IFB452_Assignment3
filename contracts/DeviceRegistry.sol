@@ -18,6 +18,13 @@ contract DeviceRegistry{
         bool decommissioned;
     }
 
+    struct Component {
+        string partNumber;
+        string componentType;
+        uint256 manufactureDate;
+        bool exists;
+    }
+
     modifier onlyOEM() {
         require(msg.sender == oem, "Only OEM can call this");
         _;

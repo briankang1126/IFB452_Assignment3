@@ -101,11 +101,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x4d988fdf55da43049384bebdd78e00adf450afdd8d2a379fe46079275a01a029",
+			"keccak256": "0x2981582b4273a5f7db46d52dcea00d1e7f61b4778def1ccdd5e1b165f418c4a5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://236095d340635834867e4c11b86042beacc3805c64720cd8706066522a724865",
-				"dweb:/ipfs/QmU6EmVYxnixzHrS8JALTRsDt63dxbiUpCxgPLfoXauCbb"
+				"bzz-raw://747bdf43433e9ca91d2aee80d6bc2ba96b2904ad1bd9442e2182789c23a1d634",
+				"dweb:/ipfs/QmRaW6f74MqGJRhAq2HHKvqWTB8gy9YVAR4SrE6ZGjH4wu"
 			]
 		}
 	},
