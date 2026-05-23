@@ -5,3 +5,4 @@ interface IDeviceRegistry {
     function deviceExists(string memory serialNumber) external view returns (bool);
     function componentExists(string memory partNumber) external view returns (bool);
 }
+
