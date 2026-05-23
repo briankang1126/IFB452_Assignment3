@@ -65,8 +65,9 @@ contract DeviceRegistry{
         return devices[id].exists;
     }
 
-    function componentExists() public onlyOEM {
-
+    function componentExists(string memory _partNumber) public view returns (bool) {
+        bytes32 id = keccak256(abi.encodePacked(_partNumber));
+        return components[id].exists;
     }
 
     function getDevice() public onlyOEM {
