@@ -30,6 +30,9 @@ contract DeviceRegistry{
         _;
     }
 
+    mapping(bytes32 => Device) public  devices;
+    mapping(bytes32 => Component) public components;
+
     function registerDevice() public onlyOEM {
 
     }

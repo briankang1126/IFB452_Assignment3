@@ -18,6 +18,40 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "components",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "partNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "componentType",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "decommission",
 				"outputs": [],
@@ -29,6 +63,55 @@
 				"name": "deviceExists",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "devices",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "serialNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "imei",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "model",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "decommissioned",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -101,11 +184,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x2981582b4273a5f7db46d52dcea00d1e7f61b4778def1ccdd5e1b165f418c4a5",
+			"keccak256": "0x898757e01106fb47060df2a91c9ef2d34c22a8a12eedba471669883598d2721b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://747bdf43433e9ca91d2aee80d6bc2ba96b2904ad1bd9442e2182789c23a1d634",
-				"dweb:/ipfs/QmRaW6f74MqGJRhAq2HHKvqWTB8gy9YVAR4SrE6ZGjH4wu"
+				"bzz-raw://713071c667a664df3b4d32f86aea7209ef0a8625d095f02dd8a651a6d29ccd28",
+				"dweb:/ipfs/Qme3pVXcjUAt5HwuFtXrggkVwsKwCk47ykhmph1p5jo3LF"
 			]
 		}
 	},
