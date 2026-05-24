@@ -9,7 +9,26 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_serialNumber",
+						"name": "partNumber",
+						"type": "string"
+					}
+				],
+				"name": "componentExists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "serialNumber",
 						"type": "string"
 					}
 				],
@@ -38,7 +57,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Verification.sol": "IDeviceRegistry"
+			"contracts/RepairEvent.sol": "IDeviceRegistry"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -52,12 +71,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Verification.sol": {
-			"keccak256": "0x1fcdca4c22752ee5e975768e72541c1bcdd0b1e07c368a45ebac1952bd887d07",
+		"contracts/RepairEvent.sol": {
+			"keccak256": "0xde5540e2175f21b08f85c5ba5082496fa51c9ff416f6aa9ed11a2a6bf7333ec9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f27d23be583303653461ec8d4768cbfa5b716eb464523ad7b19900c246d8f26e",
-				"dweb:/ipfs/QmYmb4mS3unj9bTeDvE3FnnaH6aRmwiGDWYopAhXBUrqb5"
+				"bzz-raw://ed27c90536e0e58e24cabf7f2f1067adebb92f02ed44315644ae14d7b6d4821b",
+				"dweb:/ipfs/QmXU6T7HkRr7oKuik7rVE3tuX68JDJ4QUt1Z8XVRtb6QVM"
 			]
 		}
 	},

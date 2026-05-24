@@ -1,0 +1,183 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "beforeAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testDecommission",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testDuplicateDeviceRejected",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testGetFullHistory",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testGetRepairHistory",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testLogRepairWithFlaggedComponent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testLogRepairWithVerifiedComponent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testRegisterComponent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testRegisterDevice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testRepairOnUnregisteredDeviceRejected",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testTrustScoreCalculation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testTrustScoreNeverRepaired",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testUnregisteredComponentReturnsFalse",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testVerifyActiveDevice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testVerifyUnregisteredDeviceReturnsFalse",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/Test_test.sol": "TestBlockchainProvenance"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DeviceRegistry.sol": {
+			"keccak256": "0x8de1cf9c49a85d01e7efd148b413b81bc3899bbe3e85c8591fd13f94752252e8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://91b313f0694ee00d2e49348163550b72c05986e8bd18f343986be680233727d1",
+				"dweb:/ipfs/QmQa2GP5k1r3S7V8eFiXAbZqLaNuxenvro6cK13VprrAty"
+			]
+		},
+		"contracts/RepairEvent.sol": {
+			"keccak256": "0xde5540e2175f21b08f85c5ba5082496fa51c9ff416f6aa9ed11a2a6bf7333ec9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ed27c90536e0e58e24cabf7f2f1067adebb92f02ed44315644ae14d7b6d4821b",
+				"dweb:/ipfs/QmXU6T7HkRr7oKuik7rVE3tuX68JDJ4QUt1Z8XVRtb6QVM"
+			]
+		},
+		"contracts/Verification.sol": {
+			"keccak256": "0xb6f852d26f676e6c7bd68af71a662230c6bbcf0af6efd8df9f837ce68a62f4b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3154817e316b6138e669959e6bcc53f7d954f7321afbc8411dea0e0c252a097b",
+				"dweb:/ipfs/QmRBQPWkGBMwkX9HUQTwc7YYWNFovyJNzJheDt8Gs6PvLB"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/Test_test.sol": {
+			"keccak256": "0x1101a13e34b38798a7065e194deaf3e5a11557415fb37617e989923603d311e7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://382449fc30e2b781ca384c590745a9e06651a8ad11457bfcb06662b7675efe48",
+				"dweb:/ipfs/QmNoBjBJ4YE8uUJoMKQ2ZzXPaEAMY5Fi3eArLPb2TZBoSU"
+			]
+		}
+	},
+	"version": 1
+}

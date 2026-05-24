@@ -37,14 +37,18 @@ contract RepairEvent {
         string memory _serialNumber,
         string memory _removedPart,
         string memory _newPart
-    )public {
+    )public returns (string memory message){
         require(deviceRegistry.deviceExists(_serialNumber), "Device not registered");
 
         RepairStatus status;
+        string memory statusMessage;
+
         if (deviceRegistry.componentExists(_newPart)) {
             status = RepairStatus.VERIFIED;
+            statusMessage = "Verified";
         } else {
             status = RepairStatus.FLAGGED;
+            statusMessage = "Flagged";
         }
           bytes32 id = keccak256(abi.encodePacked(_serialNumber));
         repairHistory[id].push(Repair({
@@ -56,6 +60,8 @@ contract RepairEvent {
             status:       status
         }));
           emit RepairLogged(_serialNumber, msg.sender, _newPart, status, block.timestamp);
+
+        return string (abi.encodePacked("Repair logged as:", statusMessage, "| Device: ", _serialNumber, "| New part: ", _newPart));
     }
 
     function getRepairHistory(string memory _serialNumber)

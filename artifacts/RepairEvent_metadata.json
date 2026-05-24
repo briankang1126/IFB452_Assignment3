@@ -142,7 +142,13 @@
 					}
 				],
 				"name": "logRepair",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
@@ -175,11 +181,11 @@
 	},
 	"sources": {
 		"contracts/RepairEvent.sol": {
-			"keccak256": "0xc4e246c55f77b401760cf6a2bb09a5c7c5f76757679510573ee8974a5e9202b9",
+			"keccak256": "0xde5540e2175f21b08f85c5ba5082496fa51c9ff416f6aa9ed11a2a6bf7333ec9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0a6ecf9ca96148b59b4de8587cacf524aa7ab01f31ba93d1ed8a15bab0cb4f14",
-				"dweb:/ipfs/QmYmAbfgGiSvHbdkLB2x8nW5Fnytsfm1NfMDAG2b4NPoMN"
+				"bzz-raw://ed27c90536e0e58e24cabf7f2f1067adebb92f02ed44315644ae14d7b6d4821b",
+				"dweb:/ipfs/QmXU6T7HkRr7oKuik7rVE3tuX68JDJ4QUt1Z8XVRtb6QVM"
 			]
 		}
 	},

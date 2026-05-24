@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-interface IDeviceRegistry {
+interface IDeviceRegistryV {
     function deviceExists(string memory _serialNumber) external view returns (bool);
 }
 
@@ -23,13 +23,13 @@ interface IRepairEvent {
 }
 contract Verification {
 
-    IDeviceRegistry private deviceRegistry;
+    IDeviceRegistryV private deviceRegistry;
     IRepairEvent    private repairEvent;
 
     constructor(address _deviceRegistryAddress, address _repairEventAddress) {
         require(_deviceRegistryAddress != address(0), "Invalid registry address");
         require(_repairEventAddress    != address(0), "Invalid repair event address");
-        deviceRegistry = IDeviceRegistry(_deviceRegistryAddress);
+        deviceRegistry = IDeviceRegistryV(_deviceRegistryAddress);
         repairEvent    = IRepairEvent(_repairEventAddress);
     }
 
