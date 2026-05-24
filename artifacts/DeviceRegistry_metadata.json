@@ -11,10 +11,22 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_partNumber",
+						"type": "string"
+					}
+				],
 				"name": "componentExists",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -52,17 +64,35 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
 				"name": "decommission",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
 				"name": "deviceExists",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -115,10 +145,52 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
 				"name": "getDevice",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "serialNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "imei",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "model",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "manufactureDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "decommissioned",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -135,7 +207,18 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_partNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_componentType",
+						"type": "string"
+					}
+				],
 				"name": "registerComponent",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -165,7 +248,18 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_newOwner",
+						"type": "address"
+					}
+				],
 				"name": "transferOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -200,11 +294,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x1935c67e97897af79415180ad25912b637bba96fc65bb881fa7afbb7d9abf82b",
+			"keccak256": "0x8de1cf9c49a85d01e7efd148b413b81bc3899bbe3e85c8591fd13f94752252e8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0d9740245fc72c42671f467c2dbfdbe0da302d2deb76db00e745260a3c451433",
-				"dweb:/ipfs/QmYrZ2s6Xk9oRE2ygNjwF9ZUnJbWUcudKfuNw93S4bDkN8"
+				"bzz-raw://91b313f0694ee00d2e49348163550b72c05986e8bd18f343986be680233727d1",
+				"dweb:/ipfs/QmQa2GP5k1r3S7V8eFiXAbZqLaNuxenvro6cK13VprrAty"
 			]
 		}
 	},

@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
+				"name": "deviceExists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Verification.sol": "IDeviceRegistry"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Verification.sol": {
+			"keccak256": "0x1fcdca4c22752ee5e975768e72541c1bcdd0b1e07c368a45ebac1952bd887d07",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f27d23be583303653461ec8d4768cbfa5b716eb464523ad7b19900c246d8f26e",
+				"dweb:/ipfs/QmYmb4mS3unj9bTeDvE3FnnaH6aRmwiGDWYopAhXBUrqb5"
+			]
+		}
+	},
+	"version": 1
+}

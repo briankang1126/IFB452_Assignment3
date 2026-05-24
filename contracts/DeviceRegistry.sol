@@ -70,7 +70,20 @@ contract DeviceRegistry{
         return components[id].exists;
     }
 
-    function getDevice() public onlyOEM {
-
+    function getDevice(string memory _serialNumber) public view returns 
+    (string memory serialNumber, string memory imei, string memory model, uint256 manufactureDate, address currentOwner, bool exists, bool decommissioned) 
+    {
+        bytes32 id = keccak256(abi.encodePacked(_serialNumber));
+        require(devices[id].exists, "Device not found");
+        Device memory d = devices[id];
+        return(
+            d.serialNumber,
+            d.imei,
+            d.model,
+            d.manufactureDate,
+            d.currentOwner,
+            d.exists,
+            d.decommissioned
+        );
     }
 }

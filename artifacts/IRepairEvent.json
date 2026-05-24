@@ -1,0 +1,128 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"getRepairCount(string)": "727b703f",
+			"getRepairHistory(string)": "bd6c1c85"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_serialNumber",
+					"type": "string"
+				}
+			],
+			"name": "getRepairCount",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "_serialNumber",
+					"type": "string"
+				}
+			],
+			"name": "getRepairHistory",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "string",
+							"name": "serialNumber",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "removedPart",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "newPart",
+							"type": "string"
+						},
+						{
+							"internalType": "address",
+							"name": "repairer",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "timestamp",
+							"type": "uint256"
+						},
+						{
+							"internalType": "enum IRepairEvent.RepairStatus",
+							"name": "status",
+							"type": "uint8"
+						}
+					],
+					"internalType": "struct IRepairEvent.Repair[]",
+					"name": "",
+					"type": "tuple[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}

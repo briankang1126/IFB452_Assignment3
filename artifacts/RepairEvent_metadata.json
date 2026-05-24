@@ -4,7 +4,149 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_deviceRegistryAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "serialNumber",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "repairer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newPart",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum RepairEvent.RepairStatus",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "RepairLogged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
+				"name": "getRepairCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					}
+				],
+				"name": "getRepairHistory",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "serialNumber",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "removedPart",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "newPart",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "repairer",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum RepairEvent.RepairStatus",
+								"name": "status",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct RepairEvent.Repair[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_removedPart",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_newPart",
+						"type": "string"
+					}
+				],
+				"name": "logRepair",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +175,11 @@
 	},
 	"sources": {
 		"contracts/RepairEvent.sol": {
-			"keccak256": "0x44c7d909aeef11e32ef9100c421ab73ee61d855ff2dc919bbd92f4e7410dc6c9",
+			"keccak256": "0xc4e246c55f77b401760cf6a2bb09a5c7c5f76757679510573ee8974a5e9202b9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://50c56b86cfa027f4606b528d4cbc54e96a45a546ea8d44e5d6c7648d91c8c2bf",
-				"dweb:/ipfs/Qmefu1ysVKXohiyjSPinpk8Nmqjrkhe6RtnCTRnh7VtM8c"
+				"bzz-raw://0a6ecf9ca96148b59b4de8587cacf524aa7ab01f31ba93d1ed8a15bab0cb4f14",
+				"dweb:/ipfs/QmYmAbfgGiSvHbdkLB2x8nW5Fnytsfm1NfMDAG2b4NPoMN"
 			]
 		}
 	},

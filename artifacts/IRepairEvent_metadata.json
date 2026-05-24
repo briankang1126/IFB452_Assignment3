@@ -8,18 +8,21 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_deviceRegistryAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_repairEventAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "_serialNumber",
+						"type": "string"
 					}
 				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
+				"name": "getRepairCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -29,18 +32,8 @@
 						"type": "string"
 					}
 				],
-				"name": "getFullHistory",
+				"name": "getRepairHistory",
 				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "isActive",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint256",
-						"name": "trustScore",
-						"type": "uint256"
-					},
 					{
 						"components": [
 							{
@@ -75,46 +68,8 @@
 							}
 						],
 						"internalType": "struct IRepairEvent.Repair[]",
-						"name": "repairs",
+						"name": "",
 						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_serialNumber",
-						"type": "string"
-					}
-				],
-				"name": "getTrustScore",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_serialNumber",
-						"type": "string"
-					}
-				],
-				"name": "verifyDevice",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -134,7 +89,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Verification.sol": "Verification"
+			"contracts/Verification.sol": "IRepairEvent"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
