@@ -124,7 +124,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"tests/Test_test.sol": "TestBlockchainProvenance"
+			"contracts/Test_test.sol": "TestBlockchainProvenance"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -132,7 +132,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -154,6 +154,14 @@
 				"dweb:/ipfs/QmXU6T7HkRr7oKuik7rVE3tuX68JDJ4QUt1Z8XVRtb6QVM"
 			]
 		},
+		"contracts/Test_test.sol": {
+			"keccak256": "0x1101a13e34b38798a7065e194deaf3e5a11557415fb37617e989923603d311e7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://382449fc30e2b781ca384c590745a9e06651a8ad11457bfcb06662b7675efe48",
+				"dweb:/ipfs/QmNoBjBJ4YE8uUJoMKQ2ZzXPaEAMY5Fi3eArLPb2TZBoSU"
+			]
+		},
 		"contracts/Verification.sol": {
 			"keccak256": "0xb6f852d26f676e6c7bd68af71a662230c6bbcf0af6efd8df9f837ce68a62f4b7",
 			"license": "MIT",
@@ -168,14 +176,6 @@
 			"urls": [
 				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
 				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
-			]
-		},
-		"tests/Test_test.sol": {
-			"keccak256": "0x1101a13e34b38798a7065e194deaf3e5a11557415fb37617e989923603d311e7",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://382449fc30e2b781ca384c590745a9e06651a8ad11457bfcb06662b7675efe48",
-				"dweb:/ipfs/QmNoBjBJ4YE8uUJoMKQ2ZzXPaEAMY5Fi3eArLPb2TZBoSU"
 			]
 		}
 	},
