@@ -1,0 +1,681 @@
+/* =====================================================================
+   CHAINPROOF — SAKURA DESIGN SYSTEM
+   style.css
+   ===================================================================== */
+
+/* ─── TOKENS ──────────────────────────────────────────────────────────
+   Palette sampled from a real sakura photograph:
+   bg:      #FEF5F7   sky-washed cream white
+   s1:      #FFFFFF   card white
+   s2:      #FDF0F3   blush input bg
+   s3:      #FAE8ED   petal inset
+   accent:  #C45C74   deep cherry blossom (petal base)
+   sky:     #7BBCCC   sky blue from photo background
+   bark:    #2E1A20   cherry tree bark (text)
+   ──────────────────────────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg:          #FEF5F7;
+  --s1:          #FFFFFF;
+  --s2:          #FDF0F3;
+  --s3:          #FAE8ED;
+
+  /* Borders */
+  --b0:          rgba(196, 92, 116, 0.07);
+  --b1:          rgba(196, 92, 116, 0.13);
+  --b2:          rgba(196, 92, 116, 0.25);
+
+  /* Accent — cherry blossom pink */
+  --accent:      #C45C74;
+  --accent-dim:  rgba(196, 92, 116, 0.08);
+  --accent-glow: rgba(196, 92, 116, 0.16);
+
+  /* Secondary — sky blue */
+  --sky:         #7BBCCC;
+  --sky-dim:     rgba(123, 188, 204, 0.12);
+
+  /* Semantic */
+  --green:       #5A8F70;
+  --green-dim:   rgba(90, 143, 112, 0.10);
+  --red:         #B94B5E;
+  --red-dim:     rgba(185, 75, 94, 0.10);
+  --amber:       #C4845C;
+  --amber-dim:   rgba(196, 132, 92, 0.10);
+
+  /* Text — bark tones */
+  --bark:        #2E1A20;
+  --sub:         #7A5460;
+  --muted:       #B08A94;
+
+  /* Decorative petals */
+  --petal1:      #F2C4CE;
+  --petal2:      #EDB5C2;
+  --petal3:      #F7D5DC;
+  --branch:      #8B5E52;
+
+  /* Typography */
+  --serif: 'Shippori Mincho', 'Times New Roman', serif;
+  --sans:  'Outfit', sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+
+  /* Radii */
+  --r:    8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+}
+
+/* ─── RESET ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { font-size: 16px; }
+
+/* ─── BASE ───────────────────────────────────────────────────────────── */
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--bark);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Subtle radial petal dots scattered across the page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 2px 3px at 15% 10%, rgba(242,196,206,0.50) 0%, transparent 100%),
+    radial-gradient(ellipse 2px 3px at 72% 25%, rgba(237,181,194,0.40) 0%, transparent 100%),
+    radial-gradient(ellipse 2px 3px at 40% 55%, rgba(247,213,220,0.40) 0%, transparent 100%),
+    radial-gradient(ellipse 2px 3px at 85% 70%, rgba(242,196,206,0.35) 0%, transparent 100%),
+    radial-gradient(ellipse 2px 3px at 25% 80%, rgba(237,181,194,0.30) 0%, transparent 100%),
+    radial-gradient(ellipse 2px 3px at 60% 90%, rgba(247,213,220,0.35) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── FALLING PETALS ─────────────────────────────────────────────────── */
+.petals-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+  opacity: 0;
+  animation: fall linear infinite;
+}
+
+.petal svg { display: block; }
+
+@keyframes fall {
+  0%   { opacity: 0;   transform: translateY(0px)    rotate(0deg)   scale(1.0); }
+  5%   { opacity: 0.7; }
+  85%  { opacity: 0.5; }
+  100% { opacity: 0;   transform: translateY(105vh)  rotate(360deg) scale(0.7); }
+}
+
+@keyframes sway {
+  0%,100% { margin-left:  0px; }
+  25%     { margin-left:  30px; }
+  75%     { margin-left: -20px; }
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────────────── */
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--b1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--petal2), var(--petal1));
+  border: 1px solid rgba(196, 92, 116, 0.20);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 2px 8px rgba(196, 92, 116, 0.15);
+}
+
+.logo-text {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.2px;
+  color: var(--bark);
+}
+
+.logo-text em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ─── CHIP / BADGE ───────────────────────────────────────────────────── */
+.chip {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--b1);
+  color: var(--muted);
+  background: var(--s1);
+  letter-spacing: 0.04em;
+}
+
+/* ─── WALLET BAR ─────────────────────────────────────────────────────── */
+.wallet-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: var(--r-lg);
+  padding: 12px 18px;
+  margin-bottom: 48px;
+  box-shadow: 0 1px 4px rgba(196, 92, 116, 0.06);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.status-dot.live {
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(90, 143, 112, 0.20);
+}
+
+.wallet-label {
+  font-size: 0.8125rem;
+  color: var(--sub);
+  flex: 1;
+  font-family: var(--mono);
+}
+
+.wallet-label .addr {
+  color: var(--accent);
+}
+
+.btn-connect {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: var(--r);
+  border: 1px solid rgba(196, 92, 116, 0.35);
+  background: var(--accent-dim);
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-connect:hover {
+  background: var(--accent-glow);
+  border-color: rgba(196, 92, 116, 0.55);
+}
+
+/* ─── PIPELINE / STEP INDICATOR ──────────────────────────────────────── */
+.pipeline {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 64px;
+}
+
+.pipeline::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--b1);
+  z-index: 0;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.step.active .step-circle {
+  background: var(--accent-dim);
+  border-color: rgba(196, 92, 116, 0.35);
+  color: var(--accent);
+}
+
+.step-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.step.active .step-label {
+  color: var(--sub);
+}
+
+/* ─── SECTION BLOCKS ─────────────────────────────────────────────────── */
+.section-block {
+  margin-bottom: 56px;
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  background: var(--accent-dim);
+  border: 1px solid rgba(196, 92, 116, 0.15);
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.section-role {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Display title — Shippori Mincho brings the sakura soul */
+.section-title {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+
+.section-title .petal-accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.section-desc {
+  font-size: 0.9375rem;
+  color: var(--sub);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 22px;
+  max-width: 500px;
+}
+
+/* ─── BRANCH DIVIDER ─────────────────────────────────────────────────── */
+.branch-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+}
+
+.branch-line {
+  flex: 1;
+  height: 1px;
+  background: var(--b1);
+}
+
+.branch-petals {
+  font-size: 14px;
+  color: var(--petal2);
+  letter-spacing: 3px;
+}
+
+/* ─── CARDS ──────────────────────────────────────────────────────────── */
+.card {
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 3px rgba(196, 92, 116, 0.05);
+}
+
+.card:hover {
+  border-color: var(--b2);
+  box-shadow: 0 4px 16px rgba(196, 92, 116, 0.09);
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--bark);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+
+.card-sub {
+  font-size: 0.875rem;
+  color: var(--sub);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* ─── SETUP BLOCK ────────────────────────────────────────────────────── */
+.setup-block {
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: var(--r-xl);
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(196, 92, 116, 0.05);
+}
+
+.setup-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.setup-row .field {
+  margin-bottom: 0;
+}
+
+/* ─── INPUTS ─────────────────────────────────────────────────────────── */
+.field {
+  margin-bottom: 10px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input:not([type]) {
+  width: 100%;
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  color: var(--bark);
+  padding: 10px 13px;
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  font-family: var(--sans);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus {
+  border-color: rgba(196, 92, 116, 0.40);
+  box-shadow: 0 0 0 3px rgba(196, 92, 116, 0.08);
+  background: var(--s1);
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 18px;
+  border-radius: var(--r);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #B34F67;
+  border-color: #B34F67;
+  box-shadow: 0 2px 12px rgba(196, 92, 116, 0.30);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--b2);
+  color: var(--sub);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ─── RESULT BOX ─────────────────────────────────────────────────────── */
+.result {
+  margin-top: 14px;
+  background: var(--s3);
+  border: 1px solid var(--b0);
+  border-radius: var(--r);
+  padding: 13px 14px;
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  line-height: 1.75;
+  min-height: 44px;
+  white-space: pre-wrap;
+  color: var(--sub);
+}
+
+/* ─── STATUS TAGS ────────────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tag-ok   { background: var(--green-dim); color: var(--green); border: 1px solid rgba(90,  143, 112, 0.20); }
+.tag-warn { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(196, 132,  92, 0.20); }
+.tag-risk { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(185,  75,  94, 0.20); }
+
+/* ─── NOTE ASIDE ─────────────────────────────────────────────────────── */
+.note {
+  font-size: 0.875rem;
+  color: var(--sub);
+  line-height: 1.7;
+  padding: 14px 16px;
+  background: var(--s3);
+  border-left: 2px solid rgba(196, 92, 116, 0.30);
+  border-radius: 0 var(--r) var(--r) 0;
+}
+
+/* ─── SCORE PANEL ────────────────────────────────────────────────────── */
+.score-panel {
+  padding: 20px;
+  background: var(--s3);
+  border: 1px solid var(--b1);
+  border-radius: var(--r-lg);
+}
+
+.score-big {
+  font-family: var(--serif);
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 2px;
+  color: var(--accent);
+}
+
+.score-cap {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.bar-track {
+  height: 3px;
+  background: rgba(196, 92, 116, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-desc {
+  font-size: 0.875rem;
+  color: var(--sub);
+  line-height: 1.5;
+}
+
+/* ─── GRIDS ──────────────────────────────────────────────────────────── */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.repair-inner {
+  display: grid;
+  grid-template-columns: 1fr 252px;
+  gap: 24px;
+  align-items: start;
+}
+
+.verify-grid {
+  display: grid;
+  grid-template-columns: 1fr 252px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
+.sakura-footer {
+  text-align: center;
+  padding-top: 32px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.sakura-footer .petals {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .repair-inner,
+  .verify-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .grid2,
+  .setup-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+  }
+}

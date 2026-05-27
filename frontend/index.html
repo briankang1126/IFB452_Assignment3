@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChainProof — Provenance Tracker</title>
+
+  <!-- Web3 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+
+  <!-- Fonts: Shippori Mincho (display serif) + Outfit (body) + JetBrains Mono (code) -->
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Sakura Design System -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Falling sakura petals (populated by app.js) -->
+  <div class="petals-canvas" id="petalsCanvas"></div>
+
+  <div class="wrap">
+
+    <!-- ─── HEADER ─── -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-mark">🌸</div>
+        <div class="logo-text">Chain<em>Proof</em></div>
+      </div>
+      <div class="header-right">
+        <span class="chip">Sepolia Testnet</span>
+        <span class="chip">IFB452 · Team 86</span>
+      </div>
+    </header>
+
+    <!-- ─── WALLET BAR ─── -->
+    <div class="wallet-bar">
+      <div class="status-dot" id="dot"></div>
+      <div class="wallet-label" id="walletInfo">Wallet not connected</div>
+      <button class="btn-connect" onclick="connectWallet()">Connect MetaMask</button>
+    </div>
+
+    <!-- ─── PIPELINE ─── -->
+    <div class="pipeline">
+      <div class="step active">
+        <div class="step-circle">01</div>
+        <div class="step-label">Setup<br/>Contracts</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">02</div>
+        <div class="step-label">Register<br/>Devices</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">03</div>
+        <div class="step-label">Log<br/>Repairs</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">04</div>
+        <div class="step-label">Verify &amp;<br/>Trust</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 01 — SETUP
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="section-block">
+      <div class="section-eyebrow">
+        <span class="section-num">01</span>
+        <span class="section-role">Setup</span>
+      </div>
+      <div class="section-title">
+        Connect <span class="petal-accent">contracts.</span>
+      </div>
+      <div class="section-desc">
+        Paste your three deployed contract addresses to activate all
+        on-chain interfaces before taking any action.
+      </div>
+      <div class="branch-divider">
+        <div class="branch-line"></div>
+        <div class="branch-petals">✿ ✿ ✿</div>
+        <div class="branch-line"></div>
+      </div>
+
+      <div class="setup-block">
+        <div class="card-title" style="margin-bottom:4px">Contract addresses</div>
+        <div class="card-sub">All three are required before any read or write operation.</div>
+
+        <div class="setup-row">
+          <div class="field">
+            <label>DeviceRegistry</label>
+            <input id="addrRegistry" placeholder="0x…"/>
+          </div>
+          <div class="field">
+            <label>RepairEvent</label>
+            <input id="addrRepair" placeholder="0x…"/>
+          </div>
+          <div class="field">
+            <label>Verification</label>
+            <input id="addrVerification" placeholder="0x…"/>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="loadContracts()">Load Contracts</button>
+        <div class="result" id="contractStatus">Paste deployed addresses above, then load.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 02 — OEM
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="section-block">
+      <div class="section-eyebrow">
+        <span class="section-num">02</span>
+        <span class="section-role">OEM</span>
+      </div>
+      <div class="section-title">
+        Register devices <span class="petal-accent">&amp; parts.</span>
+      </div>
+      <div class="section-desc">
+        Add devices and genuine OEM components to the on-chain registry.
+        These records establish the baseline for all downstream trust scoring.
+      </div>
+      <div class="branch-divider">
+        <div class="branch-line"></div>
+        <div class="branch-petals">✿ ✿ ✿</div>
+        <div class="branch-line"></div>
+      </div>
+
+      <div class="grid2">
+
+        <!-- Register Device -->
+        <div class="card">
+          <div class="card-title">Register device</div>
+          <div class="card-sub">Creates an immutable on-chain identity for a new unit.</div>
+
+          <div class="field">
+            <label>Serial number</label>
+            <input id="regSerial" placeholder="e.g. SN001"/>
+          </div>
+          <div class="field">
+            <label>IMEI</label>
+            <input id="regImei" placeholder="e.g. 123456789012345"/>
+          </div>
+          <div class="field">
+            <label>Model</label>
+            <input id="regModel" placeholder="e.g. Galaxy S21"/>
+          </div>
+
+          <div class="action-row">
+            <button class="btn btn-primary" onclick="registerDevice()">Register Device</button>
+          </div>
+          <div class="result" id="regResult">—</div>
+        </div>
+
+        <!-- Register Component -->
+        <div class="card">
+          <div class="card-title">Register component</div>
+          <div class="card-sub">Marks a part number as a verified genuine OEM component.</div>
+
+          <div class="field">
+            <label>Part number</label>
+            <input id="compPart" placeholder="e.g. BATT001"/>
+          </div>
+          <div class="field">
+            <label>Component type</label>
+            <input id="compType" placeholder="e.g. battery"/>
+          </div>
+
+          <div class="action-row" style="margin-top:8px">
+            <button class="btn btn-primary" onclick="registerComponent()">Register Component</button>
+          </div>
+          <div class="result" id="compResult">—</div>
+        </div>
+
+      </div><!-- /grid2 -->
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 03 — REPAIR CENTRE
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="section-block">
+      <div class="section-eyebrow">
+        <span class="section-num">03</span>
+        <span class="section-role">Repair Centre</span>
+      </div>
+      <div class="section-title">
+        Log repair <span class="petal-accent">events.</span>
+      </div>
+      <div class="section-desc">
+        Each repair is written permanently to the chain. New parts are
+        cross-checked against the OEM registry — affecting the device's trust score.
+      </div>
+      <div class="branch-divider">
+        <div class="branch-line"></div>
+        <div class="branch-petals">✿ ✿ ✿</div>
+        <div class="branch-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Log a repair event</div>
+        <div class="card-sub" style="margin-bottom:20px">
+          Record a component swap for an existing registered device.
+        </div>
+
+        <div class="repair-inner">
+          <div>
+            <div class="field">
+              <label>Device serial number</label>
+              <input id="repSerial" placeholder="Must match a registered device"/>
+            </div>
+            <div class="field">
+              <label>Removed part</label>
+              <input id="repOld" placeholder="Part number being replaced"/>
+            </div>
+            <div class="field">
+              <label>New part installed</label>
+              <input id="repNew" placeholder="Replacement part number"/>
+            </div>
+            <div class="action-row">
+              <button class="btn btn-primary" onclick="logRepair()">Log Repair</button>
+            </div>
+          </div>
+
+          <div class="note">
+            The new part is verified against the OEM registry on submission.
+            <br/><br/>
+            Part found on-chain<br/>
+            → <span class="tag tag-ok">VERIFIED</span> — trust preserved
+            <br/><br/>
+            Part not recognised<br/>
+            → <span class="tag tag-risk">FLAGGED</span> — trust reduced
+            <br/><br/>
+            Events are immutable once written to the chain.
+          </div>
+        </div>
+
+        <div class="result" id="repResult">—</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 04 — CONSUMER VERIFY
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="section-block">
+      <div class="section-eyebrow">
+        <span class="section-num">04</span>
+        <span class="section-role">Consumer</span>
+      </div>
+      <div class="section-title">
+        Verify &amp; <span class="petal-accent">trust score.</span>
+      </div>
+      <div class="section-desc">
+        Check a device's on-chain provenance before purchase. View full
+        repair history, installed parts, and computed trust score.
+      </div>
+      <div class="branch-divider">
+        <div class="branch-line"></div>
+        <div class="branch-petals">✿ ✿ ✿</div>
+        <div class="branch-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Device verification</div>
+        <div class="card-sub" style="margin-bottom:20px">
+          Enter a serial number to query the chain.
+        </div>
+
+        <div class="verify-grid">
+          <div>
+            <div class="field">
+              <label>Serial number</label>
+              <input id="verSerial" placeholder="Enter device serial number"/>
+            </div>
+            <div class="action-row">
+              <button class="btn btn-primary" onclick="verifyDevice()">Verify</button>
+              <button class="btn btn-ghost"   onclick="getTrustScore()">Trust Score</button>
+              <button class="btn btn-ghost"   onclick="getFullHistory()">Full History</button>
+            </div>
+          </div>
+
+          <!-- Score panel (hidden until a score is fetched) -->
+          <div class="score-panel" id="scorePanel" style="display:none">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:4px;">
+              <div>
+                <div class="score-big" id="scoreNum">—</div>
+                <div class="score-cap">Trust Score / 100</div>
+              </div>
+              <div id="scoreTag" style="margin-top:4px;"></div>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" id="barFill" style="width:0%"></div>
+            </div>
+            <div class="score-desc" id="scoreDesc"></div>
+          </div>
+        </div>
+
+        <div class="result" id="verResult">—</div>
+      </div>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <div class="sakura-footer">
+      <span class="petals">🌸 🌸 🌸</span>
+      ChainProof · IFB452 Team 86 · Sepolia Testnet
+    </div>
+
+  </div><!-- /wrap -->
+
+  <!-- App logic (petals + Web3) -->
+  <script src="app.js"></script>
+</body>
+</html>
