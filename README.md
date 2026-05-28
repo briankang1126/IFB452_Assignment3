@@ -59,9 +59,9 @@ Open `frontend/app.js` and locate the `window.onload` section.
 Replace the three addresses with your deployed addresses:
 
 javascript
-`document.getElementById('addrRegistry').value = "0x...";   // DeviceRegistry`
-`document.getElementById('addrRepair').value = "0x...";     // RepairEvent`
-`document.getElementById('addrVerification').value = "0x..."; // Verification`
+-document.getElementById('addrRegistry').value = "0x...";   // DeviceRegistry
+-document.getElementById('addrRepair').value = "0x...";     // RepairEvent
+-document.getElementById('addrVerification').value = "0x..."; // Verification
 
 OR
 
