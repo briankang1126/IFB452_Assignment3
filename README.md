@@ -18,7 +18,7 @@ ChainProof is a decentralised platform that tracks the ownership, repair history
 | Wallet       | Direct Ganache RPC (no MetaMask)    |
 
 ## 📦 Project Structure
-
+```text
 ├── contracts/
 │ ├── DeviceRegistry.sol
 │ ├── RepairEvent.sol
@@ -29,6 +29,7 @@ ChainProof is a decentralised platform that tracks the ownership, repair history
 │ ├── style.css
 │ └── app.js
 └── README.md
+```
 
 ## ⚙️ Setup Instructions (for local demo)
 
