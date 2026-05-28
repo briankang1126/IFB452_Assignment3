@@ -76,10 +76,73 @@ Paste the 3 contract address at the frontend page load contracts section.
 - You will see the frontend working fine
 
 ### 5. Load Contracts and test
-- Click Load Contracts (the addresses should be pre‑filled if you do step 3).
-- Use the OEM section to register a device (e.g., PHONE001) and a genuine component (BAT-GEN-001).
-- Use the Repair Centre section to log a VERIFIED repair (using the genuine part) and a FLAGGED repair (using a fake part).
-- Use the Consumer section to verify the device, check the trust score (100 → 50), and view full history.
+
+After the frontend is running and contracts are loaded, perform these tests to verify the whole system.
+
+#### 5.1 Load the contracts
+- Click **Load Contracts** (the three addresses should already be pre‑filled in the Setup section).  
+  ✅ You will see: `✓ Contracts loaded — all three interfaces ready.`
+
+#### 5.2 Register a device (OEM section)
+- **Serial number**: `PHONE001`  
+- **IMEI**: `123456789012345`  
+- **Model**: `Samsung Galaxy S23`  
+- Click **Register Device**.  
+  ✅ Expected: `✓ Device "PHONE001" registered on-chain.`
+
+#### 5.3 Register a genuine component (OEM section)
+- **Part number**: `BAT-GEN-001`  
+- **Component type**: `battery`  
+- Click **Register Component**.  
+  ✅ Expected: `✓ Component "BAT-GEN-001" (battery) registered.`
+
+#### 5.4 Log a VERIFIED repair (Repair Centre section)
+- **Device serial number**: `PHONE001`  
+- **Removed part**: `OLD-BAT-001`  
+- **New part installed**: `BAT-GEN-001`  
+- Click **Log Repair**.  
+  ✅ Expected result shows a **VERIFIED** tag:  
+  `✓ Repair logged for "PHONE001". New part BAT-GEN-001 → VERIFIED`
+
+#### 5.5 Log a FLAGGED repair (Repair Centre section)
+- **Device serial number**: `PHONE001`  
+- **Removed part**: `OLD-SCR-001`  
+- **New part installed**: `FAKE-SCR-001` (this part is not registered)  
+- Click **Log Repair**.  
+  ✅ Expected result shows a **FLAGGED** tag:  
+  `✓ Repair logged for "PHONE001". New part FAKE-SCR-001 → FLAGGED`
+
+#### 5.6 Check trust score (Consumer section)
+- **Serial number**: `PHONE001`  
+- Click **Trust Score**.  
+  ✅ The score panel appears with **Trust Score: 50/100** and a half‑filled bar.  
+  ✅ Description: “Mixed provenance — some unverified components installed.”
+
+#### 5.7 View full history (Consumer section)
+- **Serial number**: `PHONE001`  
+- Click **Full History**.  
+  ✅ Output shows device status, trust score and the two repairs with their VERIFIED/FLAGGED labels, timestamps, and repairer addresses.
+
+#### 5.8 Transfer ownership (Ownership section)
+- **Serial number**: `PHONE001`  
+- **New owner wallet address**: copy the second Ganache account address (e.g., from the wallet bar, it looks like `0xC5dCC5...`).  
+- Click **Transfer Ownership**.  
+  ✅ Expected: `✓ Ownership of "PHONE001" transferred to 0xC5dCC5...`  
+- *(Optional)* Try to transfer again from the original owner – it will fail with “Not current Owner”.
+
+#### 5.9 Decommission device (Ownership section)
+- **Serial number**: `PHONE001`  
+- Click **Decommission**.  
+  ✅ Expected: `✓ Device "PHONE001" permanently decommissioned.`  
+- After decommission, trying to transfer ownership again will fail because the device is locked.
+
+#### 5.10 Final verification (Consumer section)
+- **Serial number**: `PHONE001`  
+- **Verify** still returns active (device exists, but decommissioned).  
+- **Trust Score** remains 50 (decommission does not alter repair history).  
+- **Full History** still shows all repairs.
+
+All these tests should succeed without errors. If any step fails, check the browser console (F12) for details.
 
 
 
