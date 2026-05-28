@@ -91,7 +91,7 @@
 		"compilationTarget": {
 			"contracts/Verification.sol": "IRepairEvent"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

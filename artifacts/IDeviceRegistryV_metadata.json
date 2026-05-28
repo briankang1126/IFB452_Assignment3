@@ -40,7 +40,7 @@
 		"compilationTarget": {
 			"contracts/Verification.sol": "IDeviceRegistryV"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

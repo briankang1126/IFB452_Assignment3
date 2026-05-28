@@ -168,7 +168,7 @@
 		"compilationTarget": {
 			"contracts/RepairEvent.sol": "RepairEvent"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

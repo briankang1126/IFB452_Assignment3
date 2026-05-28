@@ -59,7 +59,7 @@
 		"compilationTarget": {
 			"contracts/RepairEvent.sol": "IDeviceRegistry"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

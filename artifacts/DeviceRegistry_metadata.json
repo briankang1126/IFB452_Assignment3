@@ -281,7 +281,7 @@
 		"compilationTarget": {
 			"contracts/DeviceRegistry.sol": "DeviceRegistry"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -294,11 +294,11 @@
 	},
 	"sources": {
 		"contracts/DeviceRegistry.sol": {
-			"keccak256": "0x8de1cf9c49a85d01e7efd148b413b81bc3899bbe3e85c8591fd13f94752252e8",
+			"keccak256": "0x7b193f4da345576a79606586c54d117465032f6f87cff48cca27369efb169975",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://91b313f0694ee00d2e49348163550b72c05986e8bd18f343986be680233727d1",
-				"dweb:/ipfs/QmQa2GP5k1r3S7V8eFiXAbZqLaNuxenvro6cK13VprrAty"
+				"bzz-raw://9378ea36e9ff008f0cdac77e538b31ba5476d16c85a1fbc12415883bc5010bba",
+				"dweb:/ipfs/Qmagxuw4tWucvxPji7yopNXzfH5JQtBkALxFM7ZSacSebu"
 			]
 		}
 	},

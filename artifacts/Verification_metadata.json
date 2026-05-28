@@ -136,7 +136,7 @@
 		"compilationTarget": {
 			"contracts/Verification.sol": "Verification"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
