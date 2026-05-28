@@ -387,8 +387,6 @@ const REGISTRY_ABI = [
 ];
 
 const REPAIR_ABI = [
-	{ "inputs": [{"name":"_serialNumber","type":"string"},{"name":"_newOwner","type":"address"}], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
-{ "inputs": [{"name":"_serialNumber","type":"string"}], "name": "decommission", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
 	{
 		"inputs": [
 			{
@@ -852,29 +850,6 @@ async function getFullHistory() {
   }
 }
 
-async function transferOwnership() {
-  if (!registryContract) { show("txResult", "Load contracts first."); return; }
-  const s = v("txSerial");
-  const n = v("txNewOwner");
-  if (!s || !n) { show("txResult", "Fill all fields."); return; }
-  try {
-    show("txResult", "⏳ Sending...");
-    await registryContract.methods.transferOwnership(s, n).send({ from: accounts[0] });
-    show("txResult", `✅ Ownership of "${s}" transferred to ${n}`);
-  } catch(e) { show("txResult", "❌ " + e.message); }
-}
-
-async function decommissionDevice() {
-  if (!registryContract) { show("decommResult", "Load contracts first."); return; }
-  const s = v("decommSerial");
-  if (!s) { show("decommResult", "Enter a serial number."); return; }
-  try {
-    show("decommResult", "⏳ Sending...");
-    await registryContract.methods.decommission(s).send({ from: accounts[0] });
-    show("decommResult", `✅ Device "${s}" permanently decommissioned.`);
-  } catch(e) { show("decommResult", "❌ " + e.message); }
-}
-
 
 /* ─── SCORE UI UPDATE ────────────────────────────────────────────────── */
 function updateScoreUI(n) {
@@ -922,41 +897,32 @@ function updateScoreUI(n) {
 }
 
 
-/* ─── TRANSFER OWNERSHIP (Optional) ──────────────────────────────────── */
 async function transferOwnership() {
-  if (!registryContract) {
-    alert('Load contracts first');
-    return;
-  }
-  const serial = prompt('Enter device serial number:');
-  const newOwner = prompt('Enter new owner address:');
-  if (!serial || !newOwner) return;
-  
+  if (!registryContract) { set('txResult', '↳ Load contracts first.'); return; }
+  const serial = document.getElementById('txSerial')?.value.trim();
+  const newOwner = document.getElementById('txNewOwner')?.value.trim();
+  if (!serial || !newOwner) { set('txResult', '↳ Fill all fields.'); return; }
   try {
+    set('txResult', '⋯ Broadcasting transfer transaction...');
     await registryContract.methods.transferOwnership(serial, newOwner)
       .send({ from: accounts[0], gas: 3000000 });
-    alert(`Ownership of ${serial} transferred to ${newOwner.slice(0, 10)}...`);
+    set('txResult', `✓ Ownership of "${serial}" transferred to ${newOwner.slice(0,10)}...`);
   } catch (e) {
-    alert(`Error: ${e.message}`);
+    set('txResult', `✗ ${e.message}`);
   }
 }
 
-
-/* ─── DECOMMISSION DEVICE (Optional) ─────────────────────────────────── */
 async function decommissionDevice() {
-  if (!registryContract) {
-    alert('Load contracts first');
-    return;
-  }
-  const serial = prompt('Enter device serial number to decommission:');
-  if (!serial) return;
-  
+  if (!registryContract) { set('decommResult', '↳ Load contracts first.'); return; }
+  const serial = document.getElementById('decommSerial')?.value.trim();
+  if (!serial) { set('decommResult', '↳ Enter a serial number.'); return; }
   try {
+    set('decommResult', '⋯ Broadcasting decommission transaction...');
     await registryContract.methods.decommission(serial)
       .send({ from: accounts[0], gas: 3000000 });
-    alert(`Device ${serial} has been decommissioned.`);
+    set('decommResult', `✓ Device "${serial}" permanently decommissioned.`);
   } catch (e) {
-    alert(`Error: ${e.message}`);
+    set('decommResult', `✗ ${e.message}`);
   }
 }
 
