@@ -387,6 +387,8 @@ const REGISTRY_ABI = [
 ];
 
 const REPAIR_ABI = [
+	{ "inputs": [{"name":"_serialNumber","type":"string"},{"name":"_newOwner","type":"address"}], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+{ "inputs": [{"name":"_serialNumber","type":"string"}], "name": "decommission", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
 	{
 		"inputs": [
 			{
@@ -753,8 +755,12 @@ async function logRepair() {
     // Use accounts[1] as the repairer (second Ganache account)
     const result = await repairContract.methods.logRepair(serial, oldPart, newPart)
       .send({ from: accounts[1], gas: 3000000 });
-    set('repResult', `✓ Repair logged for "${serial}". ${result.events ? 'Event emitted.' : ''}`);
-  } catch (e) {
+const isVerified = await registryContract.methods.componentExists(newPart).call();
+const tag = isVerified
+  ? `<span class="tag tag-ok">VERIFIED</span>`
+  : `<span class="tag tag-risk">FLAGGED</span>`;
+document.getElementById('repResult').innerHTML = 
+  `✓ Repair logged for "${serial}". New part ${newPart} → ${tag}`;  } catch (e) {
     set('repResult', `✗ ${e.message}`);
   }
 }
@@ -844,6 +850,29 @@ async function getFullHistory() {
   } catch (e) {
     set('verResult', `✗ ${e.message}`);
   }
+}
+
+async function transferOwnership() {
+  if (!registryContract) { show("txResult", "Load contracts first."); return; }
+  const s = v("txSerial");
+  const n = v("txNewOwner");
+  if (!s || !n) { show("txResult", "Fill all fields."); return; }
+  try {
+    show("txResult", "⏳ Sending...");
+    await registryContract.methods.transferOwnership(s, n).send({ from: accounts[0] });
+    show("txResult", `✅ Ownership of "${s}" transferred to ${n}`);
+  } catch(e) { show("txResult", "❌ " + e.message); }
+}
+
+async function decommissionDevice() {
+  if (!registryContract) { show("decommResult", "Load contracts first."); return; }
+  const s = v("decommSerial");
+  if (!s) { show("decommResult", "Enter a serial number."); return; }
+  try {
+    show("decommResult", "⏳ Sending...");
+    await registryContract.methods.decommission(s).send({ from: accounts[0] });
+    show("decommResult", `✅ Device "${s}" permanently decommissioned.`);
+  } catch(e) { show("decommResult", "❌ " + e.message); }
 }
 
 

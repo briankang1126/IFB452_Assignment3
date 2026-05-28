@@ -238,12 +238,70 @@
       </div>
     </div>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 04 — OWNERSHIP
+════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <div class="section-eyebrow">
+    <span class="section-num">04</span>
+    <span class="section-role">Ownership</span>
+  </div>
+  <div class="section-title">
+    Transfer &amp; <span class="petal-accent">decommission.</span>
+  </div>
+  <div class="section-desc">
+    Transfer device ownership to a new wallet, or permanently
+    decommission a device at end of life. Both actions are irreversible on-chain.
+  </div>
+  <div class="branch-divider">
+    <div class="branch-line"></div>
+    <div class="branch-petals">✿ ✿ ✿</div>
+    <div class="branch-line"></div>
+  </div>
+
+  <div class="grid2">
+
+    <!-- Transfer Ownership -->
+    <div class="card">
+      <div class="card-title">Transfer ownership</div>
+      <div class="card-sub">You must be the current owner to call this.</div>
+      <div class="field">
+        <label>Serial number</label>
+        <input id="txSerial" placeholder="e.g. SN001"/>
+      </div>
+      <div class="field">
+        <label>New owner wallet address</label>
+        <input id="txNewOwner" placeholder="0x…"/>
+      </div>
+      <div class="action-row">
+        <button class="btn btn-primary" onclick="transferOwnership()">Transfer Ownership</button>
+      </div>
+      <div class="result" id="txResult">—</div>
+    </div>
+
+    <!-- Decommission -->
+    <div class="card">
+      <div class="card-title">Decommission device</div>
+      <div class="card-sub">Permanently locks the device. Cannot be undone.</div>
+      <div class="field">
+        <label>Serial number</label>
+        <input id="decommSerial" placeholder="e.g. SN001"/>
+      </div>
+      <div class="action-row" style="margin-top:8px">
+        <button class="btn btn-primary" onclick="decommissionDevice()">Decommission</button>
+      </div>
+      <div class="result" id="decommResult">—</div>
+    </div>
+
+  </div>
+</div>
+
     <!-- ═══════════════════════════════════════════════════════════════
-         SECTION 04 — CONSUMER VERIFY
+         SECTION 05 — CONSUMER VERIFY
     ════════════════════════════════════════════════════════════════ -->
     <div class="section-block">
       <div class="section-eyebrow">
-        <span class="section-num">04</span>
+        <span class="section-num">05</span>
         <span class="section-role">Consumer</span>
       </div>
       <div class="section-title">
