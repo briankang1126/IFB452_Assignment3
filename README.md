@@ -80,7 +80,7 @@ Paste the 3 contract address at the frontend page load contracts section.
 After the frontend is running and contracts are loaded, perform these tests to verify the whole system.
 
 #### 5.1 Load the contracts
-- Click **Load Contracts** (the three addresses should already be pre‑filled in the Setup section).  
+- Click **Load Contracts** (the three addresses should already be pre‑filled in the Setup section if you do it at step 3 the javascript part).  
   ✅ You will see: `✓ Contracts loaded — all three interfaces ready.`
 
 #### 5.2 Register a device (OEM section)
