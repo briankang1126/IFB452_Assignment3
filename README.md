@@ -1,4 +1,5 @@
 # Team86_IFB452_Assignment3 - Blockchain-Based Secondhand Electronics Verification System
+# Name: Hao Kang Nyo (n12375462), Zhan Hong Yow (n12368750)
 
 ChainProof is a decentralised platform that tracks the ownership, repair history, and component authenticity of secondhand electronic devices (smartphones, laptops, etc.). It prevents counterfeit parts from entering the supply chain by recording every device registration, repair event, and component swap on a **private blockchain (Ganache)**.
 
